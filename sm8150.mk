@@ -85,6 +85,9 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.post_boot.sh
 
+# Dalvik vm configs
+$(call inherit-product, frameworks/native//build/phone-xhdpi-8192-dalvik-heap.mk)
+
 # Display
 PRODUCT_PACKAGES += \
     libdisplayconfig \

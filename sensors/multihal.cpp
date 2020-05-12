@@ -19,16 +19,17 @@
 
 #define LOG_TAG "sensors_multihal"
 #define LOG_NDEBUG 1
-#include <cutils/log.h>
 #include <cutils/atomic.h>
 #include <cutils/properties.h>
 #include <hardware/sensors.h>
+#include <log/log.h>
 
 #include <vector>
 #include <string>
 #include <fstream>
 #include <map>
 
+#include <cmath>
 #include <dirent.h>
 #include <dlfcn.h>
 #include <errno.h>
@@ -597,7 +598,7 @@ void light_sensor_correction(sensors_event_t *ev) {
         correction += als_bias;
     }
     ALOGV("Final correction: %f", correction);
-    ev->light -= correction;
+    ev->light -= std::round(correction);
     if (ev->light < 0)
         ev->light = 0;
     free_screen_buffer();
