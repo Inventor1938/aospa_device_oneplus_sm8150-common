@@ -47,15 +47,6 @@ AB_OTA_PARTITIONS += \
     vbmeta_system
 endif
 
-AB_OTA_POSTINSTALL_CONFIG += \
-    RUN_POSTINSTALL_system=true \
-    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-    FILESYSTEM_TYPE_system=ext4 \
-    POSTINSTALL_OPTIONAL_system=true
-
-PRODUCT_PACKAGES += \
-    otapreopt_script
-
 # AID/fs configs
 PRODUCT_PACKAGES += \
     fs_config_files
